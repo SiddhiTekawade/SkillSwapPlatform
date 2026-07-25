@@ -36,9 +36,8 @@ app.get('/skills', (req, res) => {
     res.send("Explore learning pathways: Web Development, Design, Marketing.");
 });
 
-// Day 4 MVC Route Integration (Replaced the old raw query block)
-app.use("/users", userRoutes);
-
+// Replace app.use("/users", userRoutes); with this line:
+app.use("/api/users", userRoutes);
 // Start Server Listener
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
