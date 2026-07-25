@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const db = require("./config/db");
+const userRoutes = require("./routes/userRoutes"); // Imported Day 4 MVC Routes file
 
 const app = express();
 
@@ -26,7 +27,7 @@ app.get("/api", (req, res) => {
     });
 });
 
-// Day 2 Homework Routes (Kept safe here!)
+// Day 2 Homework Routes
 app.get('/contact', (req, res) => {
     res.send("Contact us at support@skillswapplatform.com");
 });
@@ -35,15 +36,8 @@ app.get('/skills', (req, res) => {
     res.send("Explore learning pathways: Web Development, Design, Marketing.");
 });
 
-// Day 3 - Step 9: Live Database Query Route (Replaces old mock route)
-app.get("/users", (req, res) => {
-    db.query("SELECT * FROM users", (err, result) => {
-        if (err) {
-            return res.status(500).json(err);
-        }
-        res.json(result);
-    });
-});
+// Day 4 MVC Route Integration (Replaced the old raw query block)
+app.use("/users", userRoutes);
 
 // Start Server Listener
 const PORT = process.env.PORT || 5000;
