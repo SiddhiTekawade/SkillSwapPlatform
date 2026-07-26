@@ -1,11 +1,13 @@
-const express = require("express");
+const express = require('express');
+const { registerUser, loginUser, getProfile } = require('../controllers/userController');
+const { protect } = require('../middleware/authMiddleware'); // import middleware
 const router = express.Router();
-const userController = require("../controllers/userController");
 
-// Maps to: POST /api/users/register
-router.post("/register", userController.registerUser);
+// Public Routes
+router.post('/register', registerUser);
+router.post('/login', loginUser);
 
-//login api
-router.post("/login", userController.loginUser);
+// Protected Route
+router.get('/profile', protect, getProfile); // aadhi protect, mag getProfile
 
 module.exports = router;

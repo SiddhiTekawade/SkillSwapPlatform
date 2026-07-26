@@ -1,12 +1,12 @@
-
-// backend/controllers/userController.js
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt"); // 🔒 Step 1: Import bcrypt
-const jwt = require("jsonwebtoken"); // Step 3: Import JWT
+const bcrypt = require("bcrypt"); // 🔒 For hashing password
+const jwt = require("jsonwebtoken"); // 🔑 For JWT
 
+// @desc Register a new user
+// @route POST /api/users/register
+// @access Public
 exports.registerUser = async (req, res) => {
     try {
-        // Read data from request body
         const { full_name, email, password, bio, location } = req.body;
 
         // Validate required fields
@@ -17,10 +17,10 @@ exports.registerUser = async (req, res) => {
             });
         }
 
-        // 🔒 Step 1: Hash the plain text password securely before saving
+        // Hash the plain text password securely before saving
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // KEEPING YOUR WORKING CALLBACK STRUCTURE
+        // Create user in DB
         User.create({ full_name, email, password: hashedPassword, bio, location }, (err, result) => {
             if (err) {
                 if (err.code === "ER_DUP_ENTRY") {
@@ -29,6 +29,7 @@ exports.registerUser = async (req, res) => {
                         message: "Email already exists"
                     });
                 }
+                console.error(err);
                 return res.status(500).json({
                     success: false,
                     message: "Database error occurred"
@@ -42,6 +43,7 @@ exports.registerUser = async (req, res) => {
             });
         });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({
             success: false,
             message: "Server error during registration",
@@ -50,7 +52,9 @@ exports.registerUser = async (req, res) => {
     }
 };
 
-// Step 3 & 4: New Login Function
+// @desc Login user & get token
+// @route POST /api/users/login
+// @access Public
 exports.loginUser = (req, res) => {
     const { email, password } = req.body;
 
@@ -62,9 +66,10 @@ exports.loginUser = (req, res) => {
         });
     }
 
-    // 1. Step 4: Find User by Email using model function
+    // 1. Find User by Email using model function
     User.findUserByEmail(email, async (err, results) => {
         if (err) {
+            console.error(err);
             return res.status(500).json({
                 success: false,
                 message: "Database error"
@@ -72,9 +77,9 @@ exports.loginUser = (req, res) => {
         }
 
         if (results.length === 0) {
-            return res.status(404).json({
+            return res.status(401).json({
                 success: false,
-                message: "User not found"
+                message: "Invalid email or password" // security sathi generic
             });
         }
 
@@ -91,7 +96,7 @@ exports.loginUser = (req, res) => {
 
         // 3. Generate JWT Token
         const token = jwt.sign(
-            { id: user.id, email: user.email },
+            { id: user.id, email: user.email }, // payload madhe id takli
             process.env.JWT_SECRET,
             { expiresIn: "24h" }
         );
@@ -108,4 +113,46 @@ exports.loginUser = (req, res) => {
             }
         });
     });
+};
+
+// @desc Get logged in user profile - DAY 7
+// @route GET /api/users/profile
+// @access Private - Protected by authMiddleware
+exports.getProfile = (req, res) => {
+    try {
+        // req.user = middleware ne token madhun kadhun takla aahe
+        const userId = req.user;
+
+        // DB madhun user chi info kadha
+        User.findUserById(userId, (err, results) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({
+                    success: false,
+                    message: "Database error"
+                });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: "User not found"
+                });
+            }
+
+            // Password kadhun tak
+            const { password,...userData } = results[0];
+
+            res.status(200).json({
+                success: true,
+                user: userData
+            });
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: "Server error"
+        });
+    }
 };
