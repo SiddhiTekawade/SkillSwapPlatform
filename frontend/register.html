@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | SkillSwap</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/register.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- LEFT SECTION -->
+
+        <div class="left">
+
+            <div class="content">
+
+                <h1>SkillSwap</h1>
+
+                <h2>Learn. Teach. Grow.</h2>
+
+                <p>
+
+                    Connect with thousands of learners and mentors.
+
+                    Exchange skills and build your future.
+
+                </p>
+
+                <img src="assets/images/register-illustration.svg"
+                    alt="Register Illustration">
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SECTION -->
+
+        <div class="right">
+
+            <form id="registerForm">
+
+                <h2>Create Account</h2>
+
+                <p>Join our growing community.</p>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Full Name"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required>
+
+                    <span id="togglePassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                </div>
+
+                <div class="strength">
+
+                    <div id="strengthBar"></div>
+
+                </div>
+
+                <small id="strengthText">
+
+                    Password Strength
+
+                </small>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm Password"
+                        required>
+
+                </div>
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <input
+                        type="text"
+                        id="location"
+                        placeholder="Location">
+
+                </div>
+
+                <div class="input-box textarea">
+
+                    <textarea
+                        id="bio"
+                        rows="4"
+                        placeholder="Tell us about yourself..."></textarea>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="registerBtn">
+
+                    Register
+
+                </button>
+
+                <div class="loginLink">
+
+                    Already have an account?
+
+                    <a href="login.html">
+
+                        Login
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="js/register.js"></script>
+
+</body>
+
+</html>
