@@ -4,32 +4,39 @@
 <head>
 
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Register | SkillSwap</title>
 
     <!-- Google Font -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
-
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- CSS -->
-
     <link rel="stylesheet" href="css/register.css">
 
 </head>
 
 <body>
+
+    <!-- =========================
+         TOAST NOTIFICATION
+    ========================== -->
+
+    <div id="toast" class="toast">
+        Registration Successful
+    </div>
+
+    <!-- =========================
+         MAIN CONTAINER
+    ========================== -->
 
     <div class="container">
 
@@ -44,12 +51,11 @@
                 <h2>Learn. Teach. Grow.</h2>
 
                 <p>
-
                     Connect with thousands of learners and mentors.
-
                     Exchange skills and build your future.
-
                 </p>
+
+                <!-- You can replace this image later -->
 
                 <img src="assets/images/register-illustration.svg"
                     alt="Register Illustration">
@@ -68,6 +74,8 @@
 
                 <p>Join our growing community.</p>
 
+                <!-- FULL NAME -->
+
                 <div class="input-box">
 
                     <i class="fa-solid fa-user"></i>
@@ -80,6 +88,8 @@
 
                 </div>
 
+                <!-- EMAIL -->
+
                 <div class="input-box">
 
                     <i class="fa-solid fa-envelope"></i>
@@ -91,6 +101,8 @@
                         required>
 
                 </div>
+
+                <!-- PASSWORD -->
 
                 <div class="input-box">
 
@@ -110,6 +122,8 @@
 
                 </div>
 
+                <!-- PASSWORD STRENGTH -->
+
                 <div class="strength">
 
                     <div id="strengthBar"></div>
@@ -122,6 +136,8 @@
 
                 </small>
 
+                <!-- CONFIRM PASSWORD -->
+
                 <div class="input-box">
 
                     <i class="fa-solid fa-lock"></i>
@@ -132,7 +148,15 @@
                         placeholder="Confirm Password"
                         required>
 
+                    <span id="toggleConfirmPassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
                 </div>
+
+                <!-- LOCATION -->
 
                 <div class="input-box">
 
@@ -145,6 +169,8 @@
 
                 </div>
 
+                <!-- BIO -->
+
                 <div class="input-box textarea">
 
                     <textarea
@@ -154,13 +180,18 @@
 
                 </div>
 
+                <!-- REGISTER BUTTON -->
+
                 <button
                     type="submit"
+                    id="registerBtn"
                     class="registerBtn">
 
                     Register
 
                 </button>
+
+                <!-- LOGIN LINK -->
 
                 <div class="loginLink">
 
@@ -179,6 +210,8 @@
         </div>
 
     </div>
+
+    <!-- JAVASCRIPT -->
 
     <script src="js/register.js"></script>
 
