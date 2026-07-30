@@ -1,0 +1,147 @@
+/*=============================
+    RESET
+=============================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:"Poppins",sans-serif;
+
+    background:linear-gradient(135deg,var(--bg1),var(--bg2));
+
+    color:var(--white);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+button{
+
+    border:none;
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+}
+
+/*=============================
+    BUTTON
+=============================*/
+
+.btn-primary{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:12px;
+
+    background:linear-gradient(90deg,var(--primary),var(--secondary));
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(79,70,229,.4);
+
+}
+
+/*=============================
+    INPUT
+=============================*/
+
+.input-box{
+
+    width:100%;
+
+    position:relative;
+
+    margin-bottom:18px;
+
+}
+
+.input-box input{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    background:rgba(255,255,255,.05);
+
+    color:white;
+
+    padding:0 50px;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+.input-box i{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+}
+
+.input-box span{
+
+    position:absolute;
+
+    right:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    cursor:pointer;
+
+}

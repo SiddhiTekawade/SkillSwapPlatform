@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Login | SkillSwap</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/login.css">
+
+</head>
+
+<body>
+
+    <!--==========================
+        Animated Background
+    ===========================-->
+
+    <div class="background">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+    <!--==========================
+        Toast Notification
+    ===========================-->
+
+    <div id="toast" class="toast">
+
+        Login Successful
+
+    </div>
+
+    <!--==========================
+        Main Container
+    ===========================-->
+
+    <div class="container">
+
+        <!--==========================
+            Left Section
+        ===========================-->
+
+        <div class="left">
+
+            <div class="logo">
+
+                <i class="fa-solid fa-handshake"></i>
+
+                <h1>SkillSwap</h1>
+
+            </div>
+
+            <h2>
+
+                Learn Skills.<br>
+
+                Teach Skills.<br>
+
+                Grow Together.
+
+            </h2>
+
+            <p>
+
+                Join thousands of learners and mentors.
+
+                Exchange knowledge, build your profile,
+
+                and connect with talented people around
+
+                the world.
+
+            </p>
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-user-group"></i>
+
+                    <span>5000+ Active Members</span>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <span>1200+ Skills Available</span>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-comments"></i>
+
+                    <span>Real-time Chat System</span>
+
+                </div>
+
+                <div class="feature">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <span>Verified Reviews & Ratings</span>
+
+                </div>
+
+            </div>
+
+            <div class="illustration">
+
+                <img
+                    src="assets/images/login-illustration.svg"
+                    alt="SkillSwap Login">
+
+            </div>
+
+        </div>
+
+        <!--==========================
+            Right Section
+        ===========================-->
+
+        <div class="right">
+
+            <form id="loginForm">
+
+                <h2>
+
+                    Welcome Back 👋
+
+                </h2>
+
+                <p>
+
+                    Login to continue your learning journey.
+
+                </p>
+
+                <!-- Email -->
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Email Address"
+                        required>
+
+                </div>
+
+                <!-- Password -->
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Password"
+                        required>
+
+                    <span id="togglePassword">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                </div>
+                <!-- Remember Me & Forgot Password -->
+
+                <div class="options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe">
+
+                        <span>Remember Me</span>
+
+                    </label>
+
+                    <a href="#" class="forgotPassword">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+                <!-- Login Button -->
+
+                <button
+                    type="submit"
+                    id="loginBtn"
+                    class="loginBtn">
+
+                    <span id="loginBtnText">
+
+                        Login
+
+                    </span>
+
+                    <span id="loginLoader" class="loader"></span>
+
+                </button>
+
+                <!-- Divider -->
+
+                <div class="divider">
+
+                    <span>
+
+                        OR
+
+                    </span>
+
+                </div>
+
+                <!-- Google Login (Future Feature) -->
+
+                <button
+                    type="button"
+                    class="googleBtn">
+
+                    <i class="fa-brands fa-google"></i>
+
+                    Continue with Google
+
+                </button>
+
+                <!-- Register Link -->
+
+                <div class="registerLink">
+
+                    Don't have an account?
+
+                    <a href="register.html">
+
+                        Register Now
+
+                    </a>
+
+                </div>
+
+                <!-- Quick Stats -->
+
+                <div class="loginStats">
+
+                    <div class="stat">
+
+                        <h3>5000+</h3>
+
+                        <p>Users</p>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>1200+</h3>
+
+                        <p>Skills</p>
+
+                    </div>
+
+                    <div class="stat">
+
+                        <h3>98%</h3>
+
+                        <p>Success</p>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+                <!--==========================
+            End of Container
+        ===========================-->
+
+    </div>
+
+    <!--==========================
+            Floating Decorative Shapes
+    ===========================-->
+
+    <div class="floating-circle circle1"></div>
+    <div class="floating-circle circle2"></div>
+    <div class="floating-circle circle3"></div>
+
+    <!--==========================
+            Footer
+    ===========================-->
+
+    <footer>
+
+        © 2026 SkillSwap Platform
+
+        <span>|</span>
+
+        Learn • Teach • Grow
+
+    </footer>
+
+    <!--==========================
+            JavaScript
+    ===========================-->
+
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>
+
+    
