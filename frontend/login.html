@@ -56,12 +56,7 @@
         Toast Notification
     ===========================-->
 
-    <div id="toast" class="toast">
-
-        Login Successful
-
-    </div>
-
+    <div id="toast" class="toast"></div>
     <!--==========================
         Main Container
     ===========================-->
@@ -156,7 +151,7 @@
 
         <div class="right">
 
-            <form id="loginForm">
+           <form id="loginForm" novalidate>
 
                 <h2>
 
@@ -180,6 +175,7 @@
                         type="email"
                         id="email"
                         placeholder="Email Address"
+                        autocomplete="email"
                         required>
 
                 </div>
@@ -191,11 +187,11 @@
                     <i class="fa-solid fa-lock"></i>
 
                     <input
-                        type="password"
-                        id="password"
-                        placeholder="Password"
-                        required>
-
+                    type="password"
+                    id="password"
+                    placeholder="Password"
+                    autocomplete="current-password"
+                    required>
                     <span id="togglePassword">
 
                         <i class="fa-solid fa-eye"></i>
@@ -217,12 +213,11 @@
 
                     </label>
 
-                    <a href="#" class="forgotPassword">
+                    <a href="forgot-password.html" class="forgotPassword">
 
-                        Forgot Password?
+                         Forgot Password?
 
                     </a>
-
                 </div>
 
                 <!-- Login Button -->
@@ -257,8 +252,9 @@
                 <!-- Google Login (Future Feature) -->
 
                 <button
-                    type="button"
-                    class="googleBtn">
+                        type="button"
+                        class="googleBtn"
+                        disabled>
 
                     <i class="fa-brands fa-google"></i>
 
