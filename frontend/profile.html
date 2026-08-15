@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | SkillSwap</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- AOS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+    <!-- Existing CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- Profile CSS -->
+    <link rel="stylesheet" href="css/profile.css">
+
+</head>
+
+
+<body>
+
+    <!--========================================
+                    BACKGROUND
+    =========================================-->
+
+    <div class="background">
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </div>
+
+
+    <!--========================================
+                    PROFILE PAGE
+    =========================================-->
+
+    <div class="profile-page">
+
+
+        <!--====================================
+                    SIDEBAR
+        ======================================-->
+
+        <aside class="sidebar">
+
+            <!-- Logo -->
+
+            <div class="logo">
+
+                <i class="fa-solid fa-handshake"></i>
+
+                <h2>SkillSwap</h2>
+
+            </div>
+
+
+            <!-- Navigation -->
+
+            <ul class="menu">
+
+                <li>
+
+                    <a href="dashboard.html">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        <span>Dashboard</span>
+
+                    </a>
+
+                </li>
+
+
+                <li class="active">
+
+                    <a href="profile.html">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <span>Profile</span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="skills.html">
+
+                        <i class="fa-solid fa-code"></i>
+
+                        <span>My Skills</span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="requests.html">
+
+                        <i class="fa-solid fa-right-left"></i>
+
+                        <span>Requests</span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="chat.html">
+
+                        <i class="fa-solid fa-comments"></i>
+
+                        <span>Messages</span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="reviews.html">
+
+                        <i class="fa-solid fa-star"></i>
+
+                        <span>Reviews</span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        <span>Analytics</span>
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fa-solid fa-gear"></i>
+
+                        <span>Settings</span>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+
+            <!-- Logout -->
+
+            <div class="logout">
+
+                <button id="logoutBtn">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!--====================================
+                    MAIN CONTENT
+        ======================================-->
+
+        <main class="profile-main">
+
+
+            <!--================================
+                    TOP BAR
+            =================================-->
+
+            <header class="profile-topbar">
+
+                <div>
+
+                    <h1>My Profile</h1>
+
+                    <p>
+                        Manage your SkillSwap profile
+                        and personal information.
+                    </p>
+
+                </div>
+
+
+                <div class="top-actions">
+
+                    <button
+                        class="icon-btn"
+                        id="themeBtn"
+                        title="Toggle Theme">
+
+                        <i class="fa-solid fa-moon"></i>
+
+                    </button>
+
+
+                    <button
+                        class="icon-btn"
+                        id="notificationBtn"
+                        title="Notifications">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                        <span class="badge">3</span>
+
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!--================================
+                    PROFILE HEADER CARD
+            =================================-->
+
+            <section
+                class="profile-header-card"
+                data-aos="fade-up">
+
+
+                <!-- Profile Image -->
+
+                <div class="profile-avatar">
+
+                    <img
+                        id="profileImage"
+                        src="assets/images/default-user.png"
+                        alt="Profile Picture">
+
+                </div>
+
+
+                <!-- User Information -->
+
+                <div class="profile-header-info">
+
+                    <h2 id="profileName">
+
+                        Loading...
+
+                    </h2>
+
+
+                    <p id="profileEmail">
+
+                        Loading...
+
+                    </p>
+
+
+                    <div class="profile-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <span id="profileLocation">
+                                Pune, India
+                            </span>
+
+                        </span>
+
+
+                        <span>
+
+                            <i class="fa-solid fa-calendar"></i>
+
+                            Member since 2026
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Edit Button -->
+
+                <button
+                    class="primary-btn"
+                    id="editProfileBtn">
+
+                    <i class="fa-solid fa-pen"></i>
+
+                    Edit Profile
+
+                </button>
+
+            </section>
+
+
+            <!--================================
+                    PROFILE CONTENT
+            =================================-->
+
+            <section class="profile-grid">
+
+
+                <!--================================
+                        PERSONAL INFORMATION
+                =================================-->
+
+                <div
+                    class="glass-card personal-card"
+                    data-aos="fade-up">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+
+                                Personal Information
+
+                            </h2>
+
+                            <p>
+
+                                Your basic account information.
+
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </div>
+
+
+                    <!-- Full Name -->
+
+                    <div class="profile-field">
+
+                        <label>
+
+                            Full Name
+
+                        </label>
+
+                        <div class="field-value">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <span id="fullName">
+
+                                Loading...
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="profile-field">
+
+                        <label>
+
+                            Email Address
+
+                        </label>
+
+                        <div class="field-value">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <span id="email">
+
+                                Loading...
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Location -->
+
+                    <div class="profile-field">
+
+                        <label>
+
+                            Location
+
+                        </label>
+
+                        <div class="field-value">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <span id="location">
+
+                                Pune, India
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Bio -->
+
+                    <div class="profile-field">
+
+                        <label>
+
+                            Bio
+
+                        </label>
+
+                        <div class="bio-value">
+
+                            <p id="bio">
+
+                                Tell the SkillSwap community
+                                about yourself.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!--================================
+                        SKILL SUMMARY
+                =================================-->
+
+                <div
+                    class="glass-card skill-summary-card"
+                    data-aos="fade-up"
+                    data-aos-delay="100">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+
+                                Skill Summary
+
+                            </h2>
+
+                            <p>
+
+                                Your learning and teaching activity.
+
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-code"></i>
+
+                    </div>
+
+
+                    <!-- Skills -->
+
+                    <div class="summary-stat">
+
+                        <div class="summary-icon blue">
+
+                            <i class="fa-solid fa-code"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong id="skillCount">
+
+                                0
+
+                            </strong>
+
+                            <span>
+
+                                Skills Added
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Exchanges -->
+
+                    <div class="summary-stat">
+
+                        <div class="summary-icon green">
+
+                            <i class="fa-solid fa-right-left"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong id="exchangeCount">
+
+                                0
+
+                            </strong>
+
+                            <span>
+
+                                Skill Exchanges
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Rating -->
+
+                    <div class="summary-stat">
+
+                        <div class="summary-icon orange">
+
+                            <i class="fa-solid fa-star"></i>
+
+                        </div>
+
+                        <div>
+
+                            <strong id="profileRating">
+
+                                0.0
+
+                            </strong>
+
+                            <span>
+
+                                Average Rating
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Profile Completion -->
+
+                    <div class="completion">
+
+                        <div class="completion-header">
+
+                            <span>
+
+                                Profile Completion
+
+                            </span>
+
+                            <strong>
+
+                                75%
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar blue"
+                                style="width:75%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!--================================
+                        MY SKILLS
+                =================================-->
+
+                <div
+                    class="glass-card my-skills-card"
+                    data-aos="fade-up"
+                    data-aos-delay="200">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+
+                                My Skills
+
+                            </h2>
+
+                            <p>
+
+                                Skills you can teach or exchange.
+
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="small-btn"
+                            id="manageSkillsBtn">
+
+                            Manage Skills
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="skills-container"
+                        id="skillsContainer">
+
+
+                        <div class="skill-tag">
+
+                            <i class="fa-brands fa-java"></i>
+
+                            Java
+
+                        </div>
+
+
+                        <div class="skill-tag">
+
+                            <i class="fa-brands fa-js"></i>
+
+                            JavaScript
+
+                        </div>
+
+
+                        <div class="skill-tag">
+
+                            <i class="fa-brands fa-react"></i>
+
+                            React
+
+                        </div>
+
+
+                        <div class="skill-tag">
+
+                            <i class="fa-solid fa-database"></i>
+
+                            MySQL
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!--================================
+                        ACCOUNT STATUS
+                =================================-->
+
+                <div
+                    class="glass-card account-card"
+                    data-aos="fade-up"
+                    data-aos-delay="300">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+
+                                Account Status
+
+                            </h2>
+
+                            <p>
+
+                                Your SkillSwap account security.
+
+                            </p>
+
+                        </div>
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+
+                            Account Status
+
+                        </span>
+
+                        <strong class="status-active">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Active
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+
+                            Email Verification
+
+                        </span>
+
+                        <strong class="status-active">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Verified
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="status-item">
+
+                        <span>
+
+                            Profile Visibility
+
+                        </span>
+
+                        <strong>
+
+                            Public
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+            <!--================================
+                    FOOTER
+            =================================-->
+
+            <footer class="profile-footer">
+
+                <p>
+
+                    © 2026 SkillSwap Platform
+
+                </p>
+
+                <div>
+
+                    <a href="#">
+
+                        Privacy Policy
+
+                    </a>
+
+                    <a href="#">
+
+                        Terms
+
+                    </a>
+
+                    <a href="#">
+
+                        Help
+
+                    </a>
+
+                </div>
+
+            </footer>
+
+
+        </main>
+
+    </div>
+
+
+    <!--========================================
+                    AOS
+    ==========================================-->
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+
+    <script>
+
+        AOS.init({
+
+            duration: 800,
+
+            once: true
+
+        });
+
+    </script>
+
+
+    <!-- Profile JavaScript -->
+
+    <script src="js/profile.js"></script>
+
+</body>
+
+</html>

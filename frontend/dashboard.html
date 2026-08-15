@@ -5,54 +5,41 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard | SkillSwap</title>
 
     <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="preconnect"
-        href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Font Awesome -->
-
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- AOS Animation -->
-
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 
-    <!-- CSS -->
-
-    <link rel="stylesheet"
-        href="css/variables.css">
-
-    <link rel="stylesheet"
-        href="css/common.css">
-
-    <link rel="stylesheet"
-        href="css/animations.css">
-
-    <link rel="stylesheet"
-        href="css/dashboard.css">
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
 <body>
-
-    <!--==============================
-            Animated Background
-    ===============================-->
+  
+    <!-- =====================================================
+                        BACKGROUND
+    ====================================================== -->
 
     <div class="background">
 
@@ -63,15 +50,17 @@
 
     </div>
 
-    <!--==============================
-            Dashboard Wrapper
-    ===============================-->
+
+    <!-- =====================================================
+                        DASHBOARD
+    ====================================================== -->
 
     <div class="dashboard">
 
-        <!--==============================
-                Sidebar
-        ===============================-->
+
+        <!-- =================================================
+                            SIDEBAR
+        ================================================== -->
 
         <aside class="sidebar">
 
@@ -85,13 +74,14 @@
 
             </div>
 
+
             <!-- Navigation -->
 
             <ul class="menu">
 
                 <li class="active">
 
-                    <a href="#">
+                    <a href="dashboard.html">
 
                         <i class="fa-solid fa-house"></i>
 
@@ -100,6 +90,7 @@
                     </a>
 
                 </li>
+
 
                 <li>
 
@@ -113,6 +104,7 @@
 
                 </li>
 
+
                 <li>
 
                     <a href="skills.html">
@@ -124,6 +116,7 @@
                     </a>
 
                 </li>
+
 
                 <li>
 
@@ -137,6 +130,7 @@
 
                 </li>
 
+
                 <li>
 
                     <a href="chat.html">
@@ -148,6 +142,7 @@
                     </a>
 
                 </li>
+
 
                 <li>
 
@@ -161,9 +156,10 @@
 
                 </li>
 
+
                 <li>
 
-                    <a href="#">
+                    <a href="#analytics">
 
                         <i class="fa-solid fa-chart-line"></i>
 
@@ -173,9 +169,10 @@
 
                 </li>
 
+
                 <li>
 
-                    <a href="#">
+                    <a href="#settings">
 
                         <i class="fa-solid fa-gear"></i>
 
@@ -187,6 +184,7 @@
 
             </ul>
 
+
             <!-- Logout -->
 
             <div class="logout">
@@ -195,7 +193,7 @@
 
                     <i class="fa-solid fa-right-from-bracket"></i>
 
-                    Logout
+                    <span>Logout</span>
 
                 </button>
 
@@ -203,17 +201,21 @@
 
         </aside>
 
-        <!--==============================
-                Main Content
-        ===============================-->
+
+
+        <!-- =================================================
+                        MAIN CONTENT
+        ================================================== -->
 
         <main class="main-content">
 
-            <!--==============================
-                    Top Navbar
-            ===============================-->
+
+            <!-- =================================================
+                            TOPBAR
+            ================================================== -->
 
             <header class="topbar">
+
 
                 <!-- Search -->
 
@@ -228,45 +230,53 @@
 
                 </div>
 
-                <!-- Right Menu -->
+
+                <!-- Top Right -->
 
                 <div class="top-right">
+
+
+                    <!-- Notification -->
+
+                    <button
+                        id="notificationBtn"
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Notifications">
+
+                        <i class="fa-solid fa-bell"></i>
+
+                        <span class="badge">3</span>
+
+                    </button>
+
 
                     <!-- Theme -->
 
                     <button
+                        id="themeBtn"
                         class="icon-btn"
-                        id="themeToggle">
+                        type="button"
+                        aria-label="Toggle theme">
 
                         <i class="fa-solid fa-moon"></i>
 
                     </button>
 
-                    <!-- Notification -->
-
-                    <button
-                        class="icon-btn notification">
-
-                        <i class="fa-solid fa-bell"></i>
-
-                        <span class="badge">
-
-                            5
-
-                        </span>
-
-                    </button>
 
                     <!-- Chat -->
 
                     <button
-                        class="icon-btn">
+                        class="icon-btn"
+                        type="button"
+                        aria-label="Messages">
 
                         <i class="fa-solid fa-message"></i>
 
                     </button>
 
-                    <!-- User -->
+
+                    <!-- Profile -->
 
                     <div class="profile-box">
 
@@ -278,15 +288,11 @@
                         <div>
 
                             <h4 id="userName">
-
                                 Loading...
-
                             </h4>
 
                             <small>
-
                                 Member
-
                             </small>
 
                         </div>
@@ -297,11 +303,14 @@
 
             </header>
 
-            <!--==============================
-                    Welcome Section
-            ===============================-->
 
-            <section class="welcome-card"
+
+            <!-- =================================================
+                        WELCOME CARD
+            ================================================== -->
+
+            <section
+                class="welcome-card"
                 data-aos="fade-up">
 
                 <div class="welcome-left">
@@ -311,35 +320,43 @@
                         Welcome Back,
 
                         <span id="welcomeName">
-
                             User
-
                         </span>
 
                         👋
 
                     </h1>
 
+
                     <p>
 
                         Ready to learn something new today?
 
-                        Discover people who can teach you amazing skills
-                        and share your own expertise with the community.
+                        Discover people who can teach you amazing
+                        skills and share your own expertise with
+                        the community.
 
                     </p>
+
 
                     <div class="welcome-buttons">
 
                         <button
-                            class="primary-btn">
+                            class="primary-btn"
+                            type="button">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
 
                             Explore Skills
 
                         </button>
 
+
                         <button
-                            class="secondary-btn">
+                            class="secondary-btn"
+                            type="button">
+
+                            <i class="fa-solid fa-plus"></i>
 
                             Add New Skill
 
@@ -349,24 +366,31 @@
 
                 </div>
 
+
                 <div class="welcome-image">
 
                     <img
                         src="assets/images/dashboard.svg"
-                        alt="Dashboard">
+                        alt="SkillSwap Dashboard">
 
                 </div>
 
             </section>
 
 
-                        <!--=========================================
-                    Statistics Cards
-            ==========================================-->
+
+            <!-- =================================================
+                        STATISTICS
+            ================================================== -->
 
             <section class="stats-grid">
 
-                <div class="stat-card" data-aos="zoom-in">
+
+                <!-- Total Skills -->
+
+                <div
+                    class="stat-card"
+                    data-aos="zoom-in">
 
                     <div class="card-icon blue">
 
@@ -374,13 +398,22 @@
 
                     </div>
 
+
                     <div class="card-info">
 
-                        <h2 id="totalSkills">12</h2>
+                        <h2
+                            id="totalSkills"
+                            class="counter"
+                            data-target="12">
+
+                            0
+
+                        </h2>
 
                         <p>Total Skills</p>
 
                     </div>
+
 
                     <span class="growth positive">
 
@@ -392,7 +425,14 @@
 
                 </div>
 
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+
+
+                <!-- Exchange Requests -->
+
+                <div
+                    class="stat-card"
+                    data-aos="zoom-in"
+                    data-aos-delay="100">
 
                     <div class="card-icon green">
 
@@ -400,13 +440,22 @@
 
                     </div>
 
+
                     <div class="card-info">
 
-                        <h2 id="totalRequests">8</h2>
+                        <h2
+                            id="totalRequests"
+                            class="counter"
+                            data-target="8">
+
+                            0
+
+                        </h2>
 
                         <p>Exchange Requests</p>
 
                     </div>
+
 
                     <span class="growth positive">
 
@@ -418,7 +467,14 @@
 
                 </div>
 
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+
+
+                <!-- Messages -->
+
+                <div
+                    class="stat-card"
+                    data-aos="zoom-in"
+                    data-aos-delay="200">
 
                     <div class="card-icon orange">
 
@@ -426,13 +482,22 @@
 
                     </div>
 
+
                     <div class="card-info">
 
-                        <h2 id="totalMessages">145</h2>
+                        <h2
+                            id="totalMessages"
+                            class="counter"
+                            data-target="145">
+
+                            0
+
+                        </h2>
 
                         <p>Messages</p>
 
                     </div>
+
 
                     <span class="growth positive">
 
@@ -444,7 +509,14 @@
 
                 </div>
 
-                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+
+
+                <!-- Rating -->
+
+                <div
+                    class="stat-card"
+                    data-aos="zoom-in"
+                    data-aos-delay="300">
 
                     <div class="card-icon purple">
 
@@ -452,13 +524,19 @@
 
                     </div>
 
+
                     <div class="card-info">
 
-                        <h2 id="rating">4.9</h2>
+                        <h2 id="rating">
+
+                            4.9
+
+                        </h2>
 
                         <p>Average Rating</p>
 
                     </div>
+
 
                     <span class="growth positive">
 
@@ -474,40 +552,44 @@
 
 
 
-            <!--=========================================
-                    Dashboard Content
-            ==========================================-->
+            <!-- =================================================
+                        MAIN DASHBOARD CONTENT
+            ================================================== -->
 
             <section class="dashboard-content">
 
 
-
-                <!-- LEFT SECTION -->
+                <!-- =================================================
+                            LEFT PANEL
+                ================================================== -->
 
                 <div class="left-panel">
 
 
-
                     <!-- Analytics -->
 
-                    <div class="glass-card analytics-card"
+                    <div
+                        class="glass-card analytics-card"
+                        id="analytics"
                         data-aos="fade-up">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Dashboard Analytics
-
                             </h2>
 
-                            <button class="view-btn">
+
+                            <button
+                                class="view-btn"
+                                type="button">
 
                                 This Month
 
                             </button>
 
                         </div>
+
 
                         <canvas id="analyticsChart"></canvas>
 
@@ -517,223 +599,221 @@
 
                     <!-- Recent Requests -->
 
-                    <div class="glass-card requests-card"
+                    <div
+                        class="glass-card requests-card"
                         data-aos="fade-up"
                         data-aos-delay="100">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Recent Skill Requests
-
                             </h2>
 
-                            <a href="#">
 
+                            <a href="requests.html">
                                 View All
-
                             </a>
 
                         </div>
 
 
-
                         <div class="request-list">
 
+
+                            <!-- Request 1 -->
+
                             <div class="request-item">
 
                                 <img
-                                    src="assets/images/default-user.png">
+                                    src="assets/images/default-user.png"
+                                    alt="Rahul Sharma">
+
 
                                 <div>
 
                                     <h4>
-
                                         Rahul Sharma
-
                                     </h4>
 
                                     <p>
-
                                         Wants to learn Java
-
                                     </p>
 
                                 </div>
 
+
                                 <span class="pending">
-
                                     Pending
-
                                 </span>
 
                             </div>
 
 
 
+                            <!-- Request 2 -->
+
                             <div class="request-item">
 
                                 <img
-                                    src="assets/images/default-user.png">
+                                    src="assets/images/default-user.png"
+                                    alt="Priya Patil">
+
 
                                 <div>
 
                                     <h4>
-
                                         Priya Patil
-
                                     </h4>
 
                                     <p>
-
                                         Wants to learn React
-
                                     </p>
 
                                 </div>
+
 
                                 <span class="accepted">
-
                                     Accepted
-
                                 </span>
 
                             </div>
 
 
+
+                            <!-- Request 3 -->
 
                             <div class="request-item">
 
                                 <img
-                                    src="assets/images/default-user.png">
+                                    src="assets/images/default-user.png"
+                                    alt="Akash More">
+
 
                                 <div>
 
                                     <h4>
-
                                         Akash More
-
                                     </h4>
 
                                     <p>
-
                                         Wants to learn Photoshop
-
                                     </p>
 
                                 </div>
 
+
                                 <span class="pending">
-
                                     Pending
-
                                 </span>
 
                             </div>
+
 
                         </div>
 
                     </div>
-
-
 
                 </div>
 
 
 
-                <!-- RIGHT PANEL -->
+                <!-- =================================================
+                            RIGHT PANEL
+                ================================================== -->
 
                 <div class="right-panel">
 
 
-
                     <!-- Popular Skills -->
 
-                    <div class="glass-card"
+                    <div
+                        class="glass-card"
                         data-aos="fade-left">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Popular Skills
-
                             </h2>
 
                         </div>
 
 
+                        <!-- Java -->
 
                         <div class="skill-item">
 
                             <span>
-
                                 Java
-
                             </span>
 
                             <div class="progress">
 
-                                <div class="progress-bar blue"
-                                    style="width:92%;"></div>
+                                <div
+                                    class="progress-bar blue"
+                                    style="width:92%;">
+                                </div>
 
                             </div>
 
                         </div>
 
 
+                        <!-- JavaScript -->
 
                         <div class="skill-item">
 
                             <span>
-
                                 JavaScript
-
                             </span>
 
                             <div class="progress">
 
-                                <div class="progress-bar green"
-                                    style="width:85%;"></div>
+                                <div
+                                    class="progress-bar green"
+                                    style="width:85%;">
+                                </div>
 
                             </div>
 
                         </div>
 
 
+                        <!-- React -->
 
                         <div class="skill-item">
 
                             <span>
-
                                 React
-
                             </span>
 
                             <div class="progress">
 
-                                <div class="progress-bar purple"
-                                    style="width:70%;"></div>
+                                <div
+                                    class="progress-bar purple"
+                                    style="width:70%;">
+                                </div>
 
                             </div>
 
                         </div>
 
 
+                        <!-- UI UX -->
 
                         <div class="skill-item">
 
                             <span>
-
                                 UI / UX
-
                             </span>
 
                             <div class="progress">
 
-                                <div class="progress-bar orange"
-                                    style="width:60%;"></div>
+                                <div
+                                    class="progress-bar orange"
+                                    style="width:60%;">
+                                </div>
 
                             </div>
 
@@ -743,38 +823,34 @@
 
 
 
-                    <!-- Achievement -->
+                    <!-- Achievements -->
 
-                    <div class="glass-card"
+                    <div
+                        class="glass-card"
                         data-aos="fade-left"
                         data-aos-delay="100">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Achievement Badges
-
                             </h2>
 
                         </div>
 
 
-
                         <div class="badges">
+
 
                             <div class="badge-card">
 
                                 🏅
 
                                 <span>
-
                                     Top Mentor
-
                                 </span>
 
                             </div>
-
 
 
                             <div class="badge-card">
@@ -782,13 +858,10 @@
                                 ⭐
 
                                 <span>
-
                                     5 Star User
-
                                 </span>
 
                             </div>
-
 
 
                             <div class="badge-card">
@@ -796,13 +869,10 @@
                                 🔥
 
                                 <span>
-
                                     30 Day Streak
-
                                 </span>
 
                             </div>
-
 
 
                             <div class="badge-card">
@@ -810,37 +880,36 @@
                                 🚀
 
                                 <span>
-
                                     Skill Master
-
                                 </span>
 
                             </div>
+
 
                         </div>
 
                     </div>
 
 
-                    <!--==============================
-                        Activity Timeline
-                    ==============================-->
 
-                    <div class="glass-card timeline-card"
+                    <!-- Activity Timeline -->
+
+                    <div
+                        class="glass-card timeline-card"
                         data-aos="fade-left"
                         data-aos-delay="200">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Activity Timeline
-
                             </h2>
 
                         </div>
 
+
                         <div class="timeline">
+
 
                             <div class="timeline-item">
 
@@ -850,29 +919,27 @@
 
                                 </div>
 
+
                                 <div class="timeline-content">
 
                                     <h4>
-
                                         New Member Joined
-
                                     </h4>
 
                                     <p>
-
-                                        Rahul Sharma joined SkillSwap and wants to learn Java.
-
+                                        Rahul Sharma joined SkillSwap
+                                        and wants to learn Java.
                                     </p>
 
                                     <span>
-
                                         2 minutes ago
-
                                     </span>
 
                                 </div>
 
                             </div>
+
+
 
                             <div class="timeline-item">
 
@@ -882,29 +949,27 @@
 
                                 </div>
 
+
                                 <div class="timeline-content">
 
                                     <h4>
-
                                         Exchange Accepted
-
                                     </h4>
 
                                     <p>
-
-                                        Priya accepted your React exchange request.
-
+                                        Priya accepted your React
+                                        exchange request.
                                     </p>
 
                                     <span>
-
                                         1 hour ago
-
                                     </span>
 
                                 </div>
 
                             </div>
+
+
 
                             <div class="timeline-item">
 
@@ -914,29 +979,26 @@
 
                                 </div>
 
+
                                 <div class="timeline-content">
 
                                     <h4>
-
                                         New Review
-
                                     </h4>
 
                                     <p>
-
-                                        You received a ⭐⭐⭐⭐⭐ rating from Akash.
-
+                                        You received a 5-star rating
+                                        from Akash.
                                     </p>
 
                                     <span>
-
                                         Yesterday
-
                                     </span>
 
                                 </div>
 
                             </div>
+
 
                         </div>
 
@@ -946,34 +1008,35 @@
 
 
 
-                <!--====================================
-                        Right Sidebar Widgets
-                =====================================-->
+                <!-- =================================================
+                        RIGHT SIDEBAR WIDGETS
+                ================================================== -->
 
                 <div class="right-sidebar">
 
+
                     <!-- Notifications -->
 
-                    <div class="glass-card notification-card"
+                    <div
+                        class="glass-card notification-card"
                         data-aos="fade-left">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Notifications
-
                             </h2>
 
+
                             <span class="notification-count">
-
                                 5 New
-
                             </span>
 
                         </div>
 
+
                         <div class="notification-list">
+
 
                             <div class="notification-item unread">
 
@@ -982,20 +1045,19 @@
                                 <div>
 
                                     <h4>
-
                                         Skill Request
-
                                     </h4>
 
                                     <p>
-
-                                        Someone requested to learn Java from you.
-
+                                        Someone requested to learn
+                                        Java from you.
                                     </p>
 
                                 </div>
 
                             </div>
+
+
 
                             <div class="notification-item">
 
@@ -1004,20 +1066,18 @@
                                 <div>
 
                                     <h4>
-
                                         New Message
-
                                     </h4>
 
                                     <p>
-
                                         Priya sent you a message.
-
                                     </p>
 
                                 </div>
 
                             </div>
+
+
 
                             <div class="notification-item">
 
@@ -1026,20 +1086,17 @@
                                 <div>
 
                                     <h4>
-
                                         New Rating
-
                                     </h4>
 
                                     <p>
-
                                         You received a 5-star review.
-
                                     </p>
 
                                 </div>
 
                             </div>
+
 
                         </div>
 
@@ -1049,50 +1106,40 @@
 
                     <!-- Favourite Skills -->
 
-                    <div class="glass-card favourite-card"
+                    <div
+                        class="glass-card favourite-card"
                         data-aos="fade-left"
                         data-aos-delay="100">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Favourite Skills
-
                             </h2>
 
                         </div>
 
+
                         <div class="fav-skills">
 
                             <span>
-
                                 ❤️ Java
-
                             </span>
 
                             <span>
-
                                 💙 React
-
                             </span>
 
                             <span>
-
                                 💜 UI / UX
-
                             </span>
 
                             <span>
-
                                 💚 Node.js
-
                             </span>
 
                             <span>
-
                                 🧡 MySQL
-
                             </span>
 
                         </div>
@@ -1103,40 +1150,37 @@
 
                     <!-- Recent Chats -->
 
-                    <div class="glass-card chat-card"
+                    <div
+                        class="glass-card chat-card"
                         data-aos="fade-left"
                         data-aos-delay="200">
 
                         <div class="card-header">
 
                             <h2>
-
                                 Recent Chats
-
                             </h2>
 
                         </div>
 
+
                         <div class="chat-list">
+
 
                             <div class="chat-user">
 
                                 <img
                                     src="assets/images/default-user.png"
-                                    alt="">
+                                    alt="Rahul Sharma">
 
                                 <div>
 
                                     <h4>
-
                                         Rahul Sharma
-
                                     </h4>
 
                                     <p>
-
                                         Can we schedule today's session?
-
                                     </p>
 
                                 </div>
@@ -1145,24 +1189,22 @@
 
                             </div>
 
+
+
                             <div class="chat-user">
 
                                 <img
                                     src="assets/images/default-user.png"
-                                    alt="">
+                                    alt="Priya Patil">
 
                                 <div>
 
                                     <h4>
-
                                         Priya Patil
-
                                     </h4>
 
                                     <p>
-
                                         Thank you for today's lesson.
-
                                     </p>
 
                                 </div>
@@ -1171,29 +1213,180 @@
 
                             </div>
 
+
+
                             <div class="chat-user">
 
                                 <img
                                     src="assets/images/default-user.png"
-                                    alt="">
+                                    alt="Akash More">
 
                                 <div>
 
                                     <h4>
-
                                         Akash More
-
                                     </h4>
 
                                     <p>
-
-                                        Looking forward to learning Photoshop.
-
+                                        Looking forward to learning
+                                        Photoshop.
                                     </p>
 
                                 </div>
 
                                 <span class="online"></span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                        WEEKLY PROGRESS
+            ================================================== -->
+
+            <section class="bottom-section">
+
+
+                <!-- Weekly Progress -->
+
+                <div
+                    class="glass-card weekly-progress"
+                    data-aos="fade-up">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Weekly Learning Progress
+                        </h2>
+
+
+                        <button
+                            class="view-btn"
+                            type="button">
+
+                            View Report
+
+                        </button>
+
+                    </div>
+
+
+                    <canvas id="progressChart"></canvas>
+
+                </div>
+
+
+
+                <!-- Monthly Goals -->
+
+                <div
+                    class="glass-card goals-card"
+                    id="settings"
+                    data-aos="fade-up"
+                    data-aos-delay="100">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Monthly Goals
+                        </h2>
+
+                    </div>
+
+
+                    <!-- Goal 1 -->
+
+                    <div class="goal">
+
+                        <div>
+
+                            <span>
+                                Learn React
+                            </span>
+
+                            <strong>
+                                75%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar blue"
+                                style="width:75%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Goal 2 -->
+
+                    <div class="goal">
+
+                        <div>
+
+                            <span>
+                                Complete Java DSA
+                            </span>
+
+                            <strong>
+                                90%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar green"
+                                style="width:90%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Goal 3 -->
+
+                    <div class="goal">
+
+                        <div>
+
+                            <span>
+                                Improve UI Design
+                            </span>
+
+                            <strong>
+                                55%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar orange"
+                                style="width:55%;">
 
                             </div>
 
@@ -1205,175 +1398,37 @@
 
             </section>
 
-            <!--=========================================
-                    Weekly Progress
-            ==========================================-->
 
-            <section class="bottom-section">
 
-                <div class="glass-card weekly-progress"
-                    data-aos="fade-up">
-
-                    <div class="card-header">
-
-                        <h2>
-
-                            Weekly Learning Progress
-
-                        </h2>
-
-                        <button class="view-btn">
-
-                            View Report
-
-                        </button>
-
-                    </div>
-
-                    <canvas id="progressChart"></canvas>
-
-                </div>
-
-
-
-                <!-- Learning Goals -->
-
-                <div class="glass-card goals-card"
-                    data-aos="fade-up"
-                    data-aos-delay="100">
-
-                    <div class="card-header">
-
-                        <h2>
-
-                            Monthly Goals
-
-                        </h2>
-
-                    </div>
-
-                    <div class="goal">
-
-                        <div>
-
-                            <span>
-
-                                Learn React
-
-                            </span>
-
-                            <strong>
-
-                                75%
-
-                            </strong>
-
-                        </div>
-
-                        <div class="progress">
-
-                            <div class="progress-bar blue"
-                                style="width:75%;"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="goal">
-
-                        <div>
-
-                            <span>
-
-                                Complete Java DSA
-
-                            </span>
-
-                            <strong>
-
-                                90%
-
-                            </strong>
-
-                        </div>
-
-                        <div class="progress">
-
-                            <div class="progress-bar green"
-                                style="width:90%;"></div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="goal">
-
-                        <div>
-
-                            <span>
-
-                                Improve UI Design
-
-                            </span>
-
-                            <strong>
-
-                                55%
-
-                            </strong>
-
-                        </div>
-
-                        <div class="progress">
-
-                            <div class="progress-bar orange"
-                                style="width:55%;"></div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!--=========================================
-                    Dashboard Footer
-            ==========================================-->
+            <!-- =================================================
+                            FOOTER
+            ================================================== -->
 
             <footer class="dashboard-footer">
 
                 <p>
-
                     © 2026 SkillSwap Platform
-
                 </p>
+
 
                 <div class="footer-links">
 
                     <a href="#">
-
                         Privacy Policy
-
                     </a>
 
                     <a href="#">
-
                         Terms
-
                     </a>
 
                     <a href="#">
-
                         Contact
-
                     </a>
 
                 </div>
 
             </footer>
+
 
         </main>
 
@@ -1381,7 +1436,9 @@
 
 
 
-    <!-- Floating Decorative Circles -->
+    <!-- =====================================================
+                    FLOATING DECORATIONS
+    ====================================================== -->
 
     <div class="floating-circle circle1"></div>
 
@@ -1391,11 +1448,26 @@
 
 
 
-    <!--=========================================
-            External Scripts
-    ==========================================-->
+    <!-- =====================================================
+                    SCROLL TO TOP
+    ====================================================== -->
+
+    <div
+        class="scroll-top"
+        title="Back to top">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </div>
+
+
+
+    <!-- =====================================================
+                    AOS
+    ====================================================== -->
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
 
     <script>
 
@@ -1403,17 +1475,31 @@
 
             duration: 900,
 
-            once: true
+            once: true,
+
+            offset: 80
 
         });
 
     </script>
 
+
+
+    <!-- =====================================================
+                    CHART.JS
+    ====================================================== -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
+
+    <!-- =====================================================
+                    DASHBOARD JAVASCRIPT
+    ====================================================== -->
+
     <script src="js/dashboard.js"></script>
+
 
 </body>
 
 </html>
-

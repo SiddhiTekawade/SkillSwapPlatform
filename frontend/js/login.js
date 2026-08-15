@@ -1,16 +1,23 @@
-// ======================================
-// SkillSwap Login Page
-// ======================================
+/*=========================================================
+              SKILLSWAP LOGIN JAVASCRIPT
+=========================================================*/
 
-// DOM Elements
+"use strict";
+
+
+/*=========================================================
+              DOM ELEMENTS
+=========================================================*/
 
 const loginForm = document.getElementById("loginForm");
 
-const email = document.getElementById("email");
+const emailInput = document.getElementById("email");
 
-const password = document.getElementById("password");
+const passwordInput = document.getElementById("password");
 
 const togglePassword = document.getElementById("togglePassword");
+
+const rememberMe = document.getElementById("rememberMe");
 
 const loginBtn = document.getElementById("loginBtn");
 
@@ -18,192 +25,503 @@ const loginBtnText = document.getElementById("loginBtnText");
 
 const loginLoader = document.getElementById("loginLoader");
 
-const rememberMe = document.getElementById("rememberMe");
-
 const toast = document.getElementById("toast");
 
+const forgotPassword =
+    document.querySelector(".forgotPassword");
 
-// ======================================
-// Show / Hide Password
-// ======================================
+const googleBtn =
+    document.querySelector(".googleBtn");
 
-togglePassword.addEventListener("click", () => {
 
-    if (password.type === "password") {
+/*=========================================================
+              TOAST
+=========================================================*/
 
-        password.type = "text";
+function showToast(message, type = "success") {
 
-        togglePassword.innerHTML =
-            '<i class="fa-solid fa-eye-slash"></i>';
+    if (!toast) {
+
+        alert(message);
+
+        return;
+
+    }
+
+    toast.textContent = message;
+
+    toast.classList.remove(
+        "success",
+        "error",
+        "show"
+    );
+
+    if (type === "success") {
+
+        toast.classList.add("success");
+
+    } else {
+
+        toast.classList.add("error");
+
+    }
+
+    setTimeout(() => {
+
+        toast.classList.add("show");
+
+    }, 50);
+
+}
+
+
+/*=========================================================
+              HIDE TOAST
+=========================================================*/
+
+function hideToast() {
+
+    if (!toast) return;
+
+    toast.classList.remove("show");
+
+}
+
+
+/*=========================================================
+              PASSWORD SHOW / HIDE
+=========================================================*/
+
+if (togglePassword) {
+
+    togglePassword.addEventListener(
+        "click",
+        () => {
+
+            if (passwordInput.type === "password") {
+
+                passwordInput.type = "text";
+
+                togglePassword.innerHTML =
+                    '<i class="fa-solid fa-eye-slash"></i>';
+
+            } else {
+
+                passwordInput.type = "password";
+
+                togglePassword.innerHTML =
+                    '<i class="fa-solid fa-eye"></i>';
+
+            }
+
+        }
+    );
+
+}
+
+
+/*=========================================================
+              LOADING BUTTON
+=========================================================*/
+
+function setLoading(isLoading) {
+
+    if (!loginBtn) return;
+
+
+    if (isLoading) {
+
+        loginBtn.disabled = true;
+
+        if (loginBtnText) {
+
+            loginBtnText.textContent =
+                "Logging in...";
+
+        }
+
+        if (loginLoader) {
+
+            loginLoader.style.display =
+                "inline-block";
+
+        }
 
     }
 
     else {
 
-        password.type = "password";
-
-        togglePassword.innerHTML =
-            '<i class="fa-solid fa-eye"></i>';
-
-    }
-
-});
-
-
-// ======================================
-// Toast Function
-// ======================================
-
-function showToast(message, color) {
-
-    toast.innerHTML = message;
-
-    toast.style.background = color;
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-    }, 3000);
-
-}
-
-
-// ======================================
-// Already Logged In
-// ======================================
-
-const token = localStorage.getItem("token");
-
-if (token) {
-
-   window.location.href = "./dashboard.html";
-
-}
-
-
-// ======================================
-// Login
-// ======================================
-
-loginForm.addEventListener("submit", async (e) => {
-
-    e.preventDefault();
-
-    // Validation
-
-    if (email.value.trim() === "") {
-
-        showToast("Enter Email", "#EF4444");
-
-        return;
-
-    }
-
-    if (password.value.trim() === "") {
-
-        showToast("Enter Password", "#EF4444");
-
-        return;
-
-    }
-
-    // Loading
-
-    loginBtn.disabled = true;
-
-    loginBtnText.style.display = "none";
-
-    loginLoader.style.display = "block";
-
-
-    try {
-
-        const response = await fetch(
-
-            "http://localhost:5000/api/users/login",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type": "application/json"
-
-                },
-
-                body: JSON.stringify({
-
-                    email: email.value,
-
-                    password: password.value
-
-                })
-
-            }
-
-        );
-
-        const data = await response.json();
-
-
-        if (response.ok) {
-
-            // Save Token
-
-            if (rememberMe.checked) {
-
-                localStorage.setItem("token", data.token);
-
-                localStorage.setItem("user", JSON.stringify(data.user));
-
-            }
-
-            else {
-
-                sessionStorage.setItem("token", data.token);
-
-                sessionStorage.setItem("user", JSON.stringify(data.user));
-
-            }
-
-            showToast("✅ Login Successful", "#22C55E");
-
-            setTimeout(() => {
-
-                window.location.href = "dashboard.html";
-
-            }, 1500);
-
-        }
-
-        else {
-
-            showToast(data.message, "#EF4444");
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.log(error);
-
-        showToast("Server Error", "#EF4444");
-
-    }
-
-    finally {
-
         loginBtn.disabled = false;
 
-        loginBtnText.style.display = "inline";
+        if (loginBtnText) {
 
-        loginLoader.style.display = "none";
+            loginBtnText.textContent =
+                "Login";
+
+        }
+
+        if (loginLoader) {
+
+            loginLoader.style.display =
+                "none";
+
+        }
 
     }
 
-});
+}
+
+
+/*=========================================================
+              EMAIL VALIDATION
+=========================================================*/
+
+function isValidEmail(email) {
+
+    const pattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    return pattern.test(email);
+
+}
+
+
+/*=========================================================
+              LOGIN FORM
+=========================================================*/
+
+if (loginForm) {
+
+    loginForm.addEventListener(
+        "submit",
+        async (e) => {
+
+            e.preventDefault();
+
+
+            /*---------------------------------------------
+                    GET FORM VALUES
+            ---------------------------------------------*/
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+
+            /*---------------------------------------------
+                    VALIDATION
+            ---------------------------------------------*/
+
+            if (!email || !password) {
+
+                showToast(
+                    "Please enter email and password.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (!isValidEmail(email)) {
+
+                showToast(
+                    "Please enter a valid email address.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            /*---------------------------------------------
+                    START LOADING
+            ---------------------------------------------*/
+
+            setLoading(true);
+
+
+            try {
+
+
+                /*-----------------------------------------
+                        CALL BACKEND API
+                -----------------------------------------*/
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/users/login",
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                email: email,
+
+                                password: password
+
+                            })
+
+                        }
+                    );
+
+
+                /*-----------------------------------------
+                        READ RESPONSE
+                -----------------------------------------*/
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "LOGIN RESPONSE:",
+                    data
+                );
+
+
+                /*=========================================
+                        LOGIN SUCCESS
+                =========================================*/
+
+                if (response.ok) {
+
+
+                    console.log(
+                        "LOGIN SUCCESSFUL"
+                    );
+
+
+                    /*-------------------------------------
+                        SAVE JWT
+                    -------------------------------------*/
+
+                    if (data.token) {
+
+                        if (
+                            rememberMe &&
+                            rememberMe.checked
+                        ) {
+
+                            localStorage.setItem(
+                                "skillSwapToken",
+                                data.token
+                            );
+
+                        }
+
+                        else {
+
+                            sessionStorage.setItem(
+                                "skillSwapToken",
+                                data.token
+                            );
+
+                        }
+
+                    }
+
+
+                    /*-------------------------------------
+                        SAVE USER
+                    -------------------------------------*/
+
+                    if (data.user) {
+
+                        localStorage.setItem(
+                            "skillSwapUser",
+                            JSON.stringify(
+                                data.user
+                            )
+                        );
+
+                    }
+
+
+                    /*-------------------------------------
+                        SHOW SUCCESS
+                    -------------------------------------*/
+
+                    showToast(
+                        "✅ Login Successful!",
+                        "success"
+                    );
+
+
+                    /*-------------------------------------
+                        REDIRECT
+                    -------------------------------------*/
+
+                    setTimeout(
+                        () => {
+
+                            console.log(
+                                "REDIRECTING TO DASHBOARD..."
+                            );
+
+
+                            /*
+                             * login.html and dashboard.html
+                             * are in the SAME folder.
+                             */
+
+                            window.location.href =
+                                "./dashboard.html";
+
+
+                        },
+                        1000
+                    );
+
+
+                }
+
+
+                /*=========================================
+                        LOGIN FAILED
+                =========================================*/
+
+                else {
+
+                    showToast(
+                        data.message ||
+                        "Invalid email or password.",
+                        "error"
+                    );
+
+                    setLoading(false);
+
+                }
+
+
+            }
+
+
+            /*=============================================
+                    SERVER ERROR
+            =============================================*/
+
+            catch (error) {
+
+                console.error(
+                    "LOGIN ERROR:",
+                    error
+                );
+
+
+                showToast(
+                    "Unable to connect to server. Make sure the backend is running.",
+                    "error"
+                );
+
+
+                setLoading(false);
+
+            }
+
+        }
+    );
+
+}
+
+
+/*=========================================================
+              FORGOT PASSWORD
+=========================================================*/
+
+if (forgotPassword) {
+
+    forgotPassword.addEventListener(
+        "click",
+        (e) => {
+
+            e.preventDefault();
+
+            showToast(
+                "Password reset feature will be added soon.",
+                "error"
+            );
+
+        }
+    );
+
+}
+
+
+/*=========================================================
+              GOOGLE LOGIN
+=========================================================*/
+
+if (googleBtn) {
+
+    googleBtn.addEventListener(
+        "click",
+        () => {
+
+            showToast(
+                "Google Login will be added in the authentication phase.",
+                "error"
+            );
+
+        }
+    );
+
+}
+
+
+/*=========================================================
+              CHECK EXISTING SESSION
+=========================================================*/
+
+function checkExistingLogin() {
+
+    const localToken =
+        localStorage.getItem(
+            "skillSwapToken"
+        );
+
+    const sessionToken =
+        sessionStorage.getItem(
+            "skillSwapToken"
+        );
+
+
+    if (localToken || sessionToken) {
+
+        console.log(
+            "Existing SkillSwap login session found."
+        );
+
+    }
+
+}
+
+
+/*=========================================================
+              PAGE LOAD
+=========================================================*/
+
+window.addEventListener(
+    "load",
+    () => {
+
+        checkExistingLogin();
+
+        console.log(
+            "SkillSwap Login Page Loaded Successfully 🚀"
+        );
+
+    }
+);
