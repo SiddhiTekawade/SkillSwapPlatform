@@ -1,14 +1,31 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+const path = require("path");
 const db = require("./config/db");
 const userRoutes = require("./routes/userRoutes"); // Imported Day 4 MVC Routes file
 
 const app = express();
+const path = require("path");
+
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+app.use(
+    "/uploads",
+    express.static(
+        path.join(__dirname, "uploads")
+    )
+);
+
+
+// Serve uploaded files
+app.use(
+    "/uploads",
+    express.static(path.join(__dirname, "uploads"))
+);
 
 // Day 2 Core Routes
 app.get("/", (req, res) => {
