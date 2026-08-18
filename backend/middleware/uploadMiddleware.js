@@ -2,10 +2,9 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-
-// ==========================================
-// UPLOAD DIRECTORY
-// ==========================================
+/*=========================================================
+                UPLOAD DIRECTORY
+=========================================================*/
 
 const uploadDirectory = path.join(
     __dirname,
@@ -13,9 +12,9 @@ const uploadDirectory = path.join(
 );
 
 
-// ==========================================
-// CREATE UPLOAD DIRECTORY IF NOT EXISTS
-// ==========================================
+/*=========================================================
+                CREATE DIRECTORY
+=========================================================*/
 
 if (!fs.existsSync(uploadDirectory)) {
 
@@ -29,9 +28,9 @@ if (!fs.existsSync(uploadDirectory)) {
 }
 
 
-// ==========================================
-// STORAGE CONFIGURATION
-// ==========================================
+/*=========================================================
+                STORAGE CONFIGURATION
+=========================================================*/
 
 const storage = multer.diskStorage({
 
@@ -51,12 +50,27 @@ const storage = multer.diskStorage({
             path.extname(file.originalname)
                 .toLowerCase();
 
-        const uniqueName =
-            `profile_${Date.now()}${extension}`;
+
+        /*
+            Example filename:
+
+            user-5-1722345678901.jpg
+
+            This prevents users from
+            accidentally overwriting
+            another user's image.
+        */
+
+        const userId =
+            req.user;
+
+        const fileName =
+            `user-${userId}-${Date.now()}${extension}`;
+
 
         cb(
             null,
-            uniqueName
+            fileName
         );
 
     }
@@ -64,17 +78,22 @@ const storage = multer.diskStorage({
 });
 
 
-// ==========================================
-// FILE TYPE VALIDATION
-// ==========================================
+/*=========================================================
+                FILE VALIDATION
+=========================================================*/
 
 const fileFilter = (req, file, cb) => {
 
     const allowedTypes = [
+
         "image/jpeg",
+
         "image/jpg",
+
         "image/png",
+
         "image/webp"
+
     ];
 
 
@@ -89,7 +108,9 @@ const fileFilter = (req, file, cb) => {
             true
         );
 
-    } else {
+    }
+
+    else {
 
         cb(
             new Error(
@@ -103,9 +124,9 @@ const fileFilter = (req, file, cb) => {
 };
 
 
-// ==========================================
-// MULTER CONFIGURATION
-// ==========================================
+/*=========================================================
+                MULTER CONFIGURATION
+=========================================================*/
 
 const upload = multer({
 
@@ -121,9 +142,5 @@ const upload = multer({
 
 });
 
-
-// ==========================================
-// EXPORT
-// ==========================================
 
 module.exports = upload;

@@ -6,12 +6,15 @@ const db = require("./config/db");
 const userRoutes = require("./routes/userRoutes"); // Imported Day 4 MVC Routes file
 
 const app = express();
-const path = require("path");
+
 
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve uploaded profile images
+app.use("/uploads", express.static("uploads"));
 
 app.use(
     "/uploads",

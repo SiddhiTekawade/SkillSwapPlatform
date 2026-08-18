@@ -3,13 +3,13 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 
-// =========================================================
-//                    REGISTER USER
-// =========================================================
+/*=========================================================
+                    REGISTER USER
+=========================================================*/
 
-// @desc Register a new user
-// @route POST /api/users/register
-// @access Public
+// @desc    Register a new user
+// @route   POST /api/users/register
+// @access  Public
 
 exports.registerUser = async (req, res) => {
 
@@ -24,9 +24,15 @@ exports.registerUser = async (req, res) => {
         } = req.body;
 
 
-        // Validate required fields
+        /*---------------------------------------------
+                    VALIDATION
+        ---------------------------------------------*/
 
-        if (!full_name || !email || !password) {
+        if (
+            !full_name ||
+            !email ||
+            !password
+        ) {
 
             return res.status(400).json({
 
@@ -40,13 +46,20 @@ exports.registerUser = async (req, res) => {
         }
 
 
-        // Hash password
+        /*---------------------------------------------
+                    HASH PASSWORD
+        ---------------------------------------------*/
 
         const hashedPassword =
-            await bcrypt.hash(password, 10);
+            await bcrypt.hash(
+                password,
+                10
+            );
 
 
-        // Create user
+        /*---------------------------------------------
+                    CREATE USER
+        ---------------------------------------------*/
 
         User.create(
             {
@@ -61,9 +74,10 @@ exports.registerUser = async (req, res) => {
 
                 if (err) {
 
-                    // Duplicate email
-
-                    if (err.code === "ER_DUP_ENTRY") {
+                    if (
+                        err.code ===
+                        "ER_DUP_ENTRY"
+                    ) {
 
                         return res.status(400).json({
 
@@ -107,16 +121,17 @@ exports.registerUser = async (req, res) => {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Register Error:",
+            error
+        );
 
         return res.status(500).json({
 
             success: false,
 
             message:
-                "Server error during registration",
-
-            error: error.message
+                "Server error during registration"
 
         });
 
@@ -125,14 +140,13 @@ exports.registerUser = async (req, res) => {
 };
 
 
+/*=========================================================
+                    LOGIN USER
+=========================================================*/
 
-// =========================================================
-//                    LOGIN USER
-// =========================================================
-
-// @desc Login user & get token
-// @route POST /api/users/login
-// @access Public
+// @desc    Login user & get JWT token
+// @route   POST /api/users/login
+// @access  Public
 
 exports.loginUser = (req, res) => {
 
@@ -142,9 +156,14 @@ exports.loginUser = (req, res) => {
     } = req.body;
 
 
-    // Validate
+    /*---------------------------------------------
+                    VALIDATION
+    ---------------------------------------------*/
 
-    if (!email || !password) {
+    if (
+        !email ||
+        !password
+    ) {
 
         return res.status(400).json({
 
@@ -158,7 +177,9 @@ exports.loginUser = (req, res) => {
     }
 
 
-    // Find user by email
+    /*---------------------------------------------
+                    FIND USER
+    ---------------------------------------------*/
 
     User.findUserByEmail(
         email,
@@ -181,9 +202,9 @@ exports.loginUser = (req, res) => {
             }
 
 
-            // User not found
-
-            if (results.length === 0) {
+            if (
+                results.length === 0
+            ) {
 
                 return res.status(401).json({
 
@@ -197,10 +218,13 @@ exports.loginUser = (req, res) => {
             }
 
 
-            const user = results[0];
+            const user =
+                results[0];
 
 
-            // Compare password
+            /*-----------------------------------------
+                        CHECK PASSWORD
+            -----------------------------------------*/
 
             const isMatch =
                 await bcrypt.compare(
@@ -223,27 +247,34 @@ exports.loginUser = (req, res) => {
             }
 
 
-            // Generate JWT token
+            /*-----------------------------------------
+                        CREATE JWT
+            -----------------------------------------*/
 
-            const token = jwt.sign(
+            const token =
+                jwt.sign(
 
-                {
-                    id: user.id,
-                    email: user.email
-                },
+                    {
+                        id: user.id,
 
-                process.env.JWT_SECRET,
+                        email: user.email
+                    },
 
-                {
-                    expiresIn: "24h"
-                }
+                    process.env.JWT_SECRET,
 
-            );
+                    {
+                        expiresIn:
+                            "24h"
+                    }
+
+                );
 
 
-            // Send response
+            /*-----------------------------------------
+                        RESPONSE
+            -----------------------------------------*/
 
-            res.status(200).json({
+            return res.status(200).json({
 
                 success: true,
 
@@ -272,25 +303,31 @@ exports.loginUser = (req, res) => {
 };
 
 
+/*=========================================================
+                    GET PROFILE
+=========================================================*/
 
-// =========================================================
-//                    GET USER PROFILE
-// =========================================================
-
-// @desc Get logged in user profile
-// @route GET /api/users/profile
-// @access Private
+// @desc    Get logged-in user's profile
+// @route   GET /api/users/profile
+// @access  Private
 
 exports.getProfile = (req, res) => {
 
     try {
 
-        // User ID comes from authMiddleware
+        /*
+            protect middleware puts
+            the logged-in user's ID
+            inside req.user
+        */
 
-        const userId = req.user;
+        const userId =
+            req.user;
 
 
-        // Find user by ID
+        /*---------------------------------------------
+                    FIND USER
+        ---------------------------------------------*/
 
         User.findUserById(
             userId,
@@ -313,9 +350,9 @@ exports.getProfile = (req, res) => {
                 }
 
 
-                // User not found
-
-                if (results.length === 0) {
+                if (
+                    results.length === 0
+                ) {
 
                     return res.status(404).json({
 
@@ -329,7 +366,9 @@ exports.getProfile = (req, res) => {
                 }
 
 
-                // Remove password if returned
+                /*-----------------------------------------
+                        REMOVE PASSWORD
+                -----------------------------------------*/
 
                 const {
                     password,
@@ -353,7 +392,10 @@ exports.getProfile = (req, res) => {
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Get Profile Error:",
+            error
+        );
 
         return res.status(500).json({
 
@@ -369,60 +411,99 @@ exports.getProfile = (req, res) => {
 };
 
 
+/*=========================================================
+                    UPDATE PROFILE
+=========================================================*/
 
-// =========================================================
-//              UPLOAD PROFILE IMAGE
-// =========================================================
+// @desc    Update logged-in user's profile
+// @route   PUT /api/users/profile
+// @access  Private
 
-// @desc Upload / update logged-in user's profile image
-// @route PUT /api/users/profile/image
-// @access Private
-
-exports.uploadProfileImage = (req, res) => {
+exports.updateProfile = async (req, res) => {
 
     try {
 
-        // Check if image was uploaded
+        /*
+            User ID comes from JWT
+        */
 
-        if (!req.file) {
+        const userId =
+            req.user;
+
+
+        /*
+            Data coming from frontend
+        */
+
+        const {
+            full_name,
+            bio,
+            location
+        } = req.body;
+
+
+        /*---------------------------------------------
+                    VALIDATION
+        ---------------------------------------------*/
+
+        if (!full_name || !full_name.trim()) {
 
             return res.status(400).json({
 
                 success: false,
 
                 message:
-                    "Please select a profile image."
+                    "Full name is required"
 
             });
 
         }
 
 
-        // Logged-in user's ID
+        if (full_name.trim().length < 2) {
 
-        const userId = req.user;
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    "Full name must contain at least 2 characters"
+
+            });
+
+        }
 
 
-        // Multer gives us the saved filename
+        /*---------------------------------------------
+                    UPDATE DATABASE
+        ---------------------------------------------*/
 
-        const profileImage =
-            req.file.filename;
-
-
-        // Update database
-
-        User.updateProfileImage(
+        User.updateProfile(
 
             userId,
 
-            profileImage,
+            {
+                full_name:
+                    full_name.trim(),
+
+                bio:
+                    bio
+                        ? bio.trim()
+                        : null,
+
+                location:
+                    location
+                        ? location.trim()
+                        : null
+
+            },
 
             (err, result) => {
 
                 if (err) {
 
                     console.error(
-                        "Profile image database error:",
+                        "Update Profile DB Error:",
                         err
                     );
 
@@ -431,45 +512,98 @@ exports.uploadProfileImage = (req, res) => {
                         success: false,
 
                         message:
-                            "Failed to save profile image."
+                            "Database error while updating profile"
 
                     });
 
                 }
 
 
-                // User not found
+                /*-----------------------------------------
+                        CHECK USER EXISTS
+                -----------------------------------------*/
 
-                if (result.affectedRows === 0) {
+                if (
+                    result.affectedRows === 0
+                ) {
 
                     return res.status(404).json({
 
                         success: false,
 
                         message:
-                            "User not found."
+                            "User not found"
 
                     });
 
                 }
 
 
-                // Successful response
+                /*-----------------------------------------
+                        GET UPDATED USER
+                -----------------------------------------*/
 
-                return res.status(200).json({
+                User.findUserById(
 
-                    success: true,
+                    userId,
 
-                    message:
-                        "Profile image updated successfully.",
+                    (findErr, results) => {
 
-                    profile_image:
-                        profileImage,
+                        if (findErr) {
 
-                    image_url:
-                        `http://localhost:5000/uploads/${profileImage}`
+                            console.error(
+                                findErr
+                            );
 
-                });
+                            return res.status(500).json({
+
+                                success: false,
+
+                                message:
+                                    "Profile updated but unable to fetch updated data"
+
+                            });
+
+                        }
+
+
+                        if (
+                            results.length === 0
+                        ) {
+
+                            return res.status(404).json({
+
+                                success: false,
+
+                                message:
+                                    "User not found after update"
+
+                            });
+
+                        }
+
+
+                        const {
+                            password,
+                            ...userData
+                        } = results[0];
+
+
+                        return res.status(200).json({
+
+                            success: true,
+
+                            message:
+                                "Profile updated successfully",
+
+                            user:
+                                userData
+
+                        });
+
+                    }
+
+                );
 
             }
 
@@ -480,7 +614,7 @@ exports.uploadProfileImage = (req, res) => {
     catch (error) {
 
         console.error(
-            "Profile image upload error:",
+            "Update Profile Error:",
             error
         );
 
@@ -489,7 +623,7 @@ exports.uploadProfileImage = (req, res) => {
             success: false,
 
             message:
-                "Server error while uploading profile image."
+                "Server error while updating profile"
 
         });
 

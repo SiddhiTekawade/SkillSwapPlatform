@@ -1,4 +1,3 @@
-
 // backend/models/userModel.js
 
 const db = require("../config/db");
@@ -6,14 +5,14 @@ const db = require("../config/db");
 
 const User = {
 
-    // =====================================================
-    // 1. FETCH ALL USERS / PROFILES
-    // =====================================================
+
+    /*=========================================================
+                        GET ALL USERS
+    =========================================================*/
 
     getAll: (callback) => {
 
-        db.query(
-            `
+        const query = `
             SELECT
                 id,
                 full_name,
@@ -22,16 +21,19 @@ const User = {
                 location,
                 profile_image
             FROM users
-            `,
+        `;
+
+        db.query(
+            query,
             callback
         );
 
     },
 
 
-    // =====================================================
-    // 2. CREATE / REGISTER USER
-    // =====================================================
+    /*=========================================================
+                        CREATE USER
+    =========================================================*/
 
     create: (userData, callback) => {
 
@@ -72,9 +74,9 @@ const User = {
     },
 
 
-    // =====================================================
-    // 3. FIND USER BY EMAIL
-    // =====================================================
+    /*=========================================================
+                    FIND USER BY EMAIL
+    =========================================================*/
 
     findUserByEmail: (email, callback) => {
 
@@ -94,9 +96,9 @@ const User = {
     },
 
 
-    // =====================================================
-    // 4. FIND USER BY ID
-    // =====================================================
+    /*=========================================================
+                    FIND USER BY ID
+    =========================================================*/
 
     findUserById: (id, callback) => {
 
@@ -107,7 +109,8 @@ const User = {
                 email,
                 bio,
                 location,
-                profile_image
+                profile_image,
+                created_at
             FROM users
             WHERE id = ?
         `;
@@ -122,12 +125,55 @@ const User = {
     },
 
 
-    // =====================================================
-    // 5. UPDATE PROFILE IMAGE
-    // =====================================================
+    /*=========================================================
+                    UPDATE USER PROFILE
+    =========================================================*/
+
+    updateProfile: (
+        id,
+        userData,
+        callback
+    ) => {
+
+        const query = `
+            UPDATE users
+            SET
+                full_name = ?,
+                bio = ?,
+                location = ?
+            WHERE id = ?
+        `;
+
+
+        const values = [
+
+            userData.full_name,
+
+            userData.bio || null,
+
+            userData.location || null,
+
+            id
+
+        ];
+
+
+        db.query(
+            query,
+            values,
+            callback
+        );
+
+    },
+
+
+    /*=========================================================
+                    UPDATE PROFILE IMAGE
+                    (We'll use this later)
+    =========================================================*/
 
     updateProfileImage: (
-        userId,
+        id,
         profileImage,
         callback
     ) => {
@@ -143,7 +189,7 @@ const User = {
             query,
             [
                 profileImage,
-                userId
+                id
             ],
             callback
         );

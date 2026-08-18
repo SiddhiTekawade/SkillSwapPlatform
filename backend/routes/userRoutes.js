@@ -4,107 +4,21 @@ const {
     registerUser,
     loginUser,
     getProfile,
-    uploadProfileImage
+    updateProfile
 } = require("../controllers/userController");
 
-const { protect } =
-    require("../middleware/authMiddleware");
-
-const multer = require("multer");
-
-const path = require("path");
+const {
+    protect
+} = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
 
-// =====================================================
-//                    MULTER CONFIGURATION
-// =====================================================
-
-const storage = multer.diskStorage({
-
-    destination: (req, file, cb) => {
-
-        cb(
-            null,
-            path.join(__dirname, "../uploads")
-        );
-
-    },
-
-    filename: (req, file, cb) => {
-
-        const uniqueName =
-            Date.now() +
-            "-" +
-            Math.round(Math.random() * 1E9) +
-            path.extname(file.originalname);
-
-        cb(
-            null,
-            uniqueName
-        );
-
-    }
-
-});
-
-
-// =====================================================
-//                    FILE FILTER
-// =====================================================
-
-const fileFilter = (req, file, cb) => {
-
-    const allowedTypes = [
-        "image/jpeg",
-        "image/png",
-        "image/jpg",
-        "image/webp"
-    ];
-
-
-    if (allowedTypes.includes(file.mimetype)) {
-
-        cb(null, true);
-
-    }
-
-    else {
-
-        cb(
-            new Error(
-                "Only JPG, JPEG, PNG and WEBP images are allowed."
-            ),
-            false
-        );
-
-    }
-
-};
-
-
-const upload = multer({
-
-    storage: storage,
-
-    fileFilter: fileFilter,
-
-    limits: {
-
-        fileSize: 5 * 1024 * 1024
-
-    }
-
-});
-
-
-// =====================================================
-//                    PUBLIC ROUTES
-// =====================================================
+/*=========================================================
+                    PUBLIC ROUTES
+=========================================================*/
 
 // Register
-
 router.post(
     "/register",
     registerUser
@@ -112,19 +26,17 @@ router.post(
 
 
 // Login
-
 router.post(
     "/login",
     loginUser
 );
 
 
-// =====================================================
-//                    PROTECTED ROUTES
-// =====================================================
+/*=========================================================
+                    PROTECTED ROUTES
+=========================================================*/
 
 // Get logged-in user's profile
-
 router.get(
     "/profile",
     protect,
@@ -132,17 +44,11 @@ router.get(
 );
 
 
-// =====================================================
-//                PROFILE IMAGE UPLOAD
-// =====================================================
-
-// Upload / update profile image
-
+// Update logged-in user's profile
 router.put(
-    "/profile/image",
+    "/profile",
     protect,
-    upload.single("profile_image"),
-    uploadProfileImage
+    updateProfile
 );
 
 
